@@ -1,4 +1,4 @@
-package com.chxzyfps.mybibleapp.presentation
+package com.chxzyfps.mybibleapp.domain.presentation
 
 import com.chxzyfps.mybibleapp.core.Abstract
 
