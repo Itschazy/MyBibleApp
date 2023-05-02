@@ -1,16 +1,16 @@
 package com.chxzyfps.mybibleapp.data.net
 
 import com.chxzyfps.mybibleapp.core.Abstract
-import com.chxzyfps.mybibleapp.data.BookData
+import com.chxzyfps.mybibleapp.core.Book
 import com.google.gson.annotations.SerializedName
 
-data class BookServerModel(
+data class BookCloud(
     @SerializedName("id")
     private val id: Int,
     @SerializedName("name")
     private val name: String
-) : Abstract.Object<BookData, BookServerToDataMapper>() {
-    override fun map(mapper: BookServerToDataMapper): BookData {
+) : Abstract.Object<Book, BookCloudMapper>() {
+    override fun map(mapper: BookCloudMapper): Book {
         return mapper.map(id, name)
     }
 
