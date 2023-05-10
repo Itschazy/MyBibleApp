@@ -18,6 +18,9 @@ sealed class BooksData : Abstract.Object<BookDomain, BooksDataToDomainMapper>() 
         }
 
     }
-//    class Success(private val books: List<BookServerModel>) : BookData
+}
 
+interface BooksDataToDomainMapper : Abstract.Mapper {
+    fun map(books: List<Book>): BookDomain
+    fun map(e: Exception): BookDomain
 }
