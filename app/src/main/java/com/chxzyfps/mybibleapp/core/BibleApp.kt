@@ -13,8 +13,14 @@ import com.chxzyfps.mybibleapp.data.net.BooksService
 import retrofit2.Retrofit
 import com.chxzyfps.mybibleapp.domain.BaseBooksDataToDomainMapper
 import com.chxzyfps.mybibleapp.domain.BooksInteractor
+import com.chxzyfps.mybibleapp.presentation.BaseBooksDomainToUiMapper
+import com.chxzyfps.mybibleapp.presentation.BooksCommunication
+import com.chxzyfps.mybibleapp.presentation.MainViewModel
+import com.chxzyfps.mybibleapp.presentation.ResourceProvider
 
 class BibleApp : Application() {
+
+    lateinit var mainViewModel: MainViewModel
 
     override fun onCreate() {
         super.onCreate()
@@ -41,5 +47,11 @@ class BibleApp : Application() {
         const val BASE_URL = "https://bible-go-api.rkeplin.com/v1/"
 
         val booksInteractor = BooksInteractor.Base(booksRepository, BaseBooksDataToDomainMapper())
+
+        mainViewModel = MainViewModel(
+            booksInteractor,
+            BaseBooksDomainToUiMapper(BooksCommunication.Base(), ResourceProvider.Base(this))
+        )
+
     }
 }
